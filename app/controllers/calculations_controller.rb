@@ -83,18 +83,38 @@ class CalculationsController < ApplicationController
     # The numbers the user input are in the array @numbers.
     # ================================================================================
 
-    @sorted_numbers = "Replace this string with your answer."
+    #   @squared_numbers = []
 
-    @count = "Replace this string with your answer."
+    #   @numbers.each do |num|
+    #     square = num * num
+    #     @squared_numbers.push(square)
+    #   end
 
-    @minimum = "Replace this string with your answer."
+    # @sorted_numbers = @squared_numbers
 
-    @maximum = "Replace this string with your answer."
+    ####################SORTED NUMBERS####################
+    @sorted_numbers = @numbers.sort!
 
-    @range = "Replace this string with your answer."
+    ####################COUNT####################
+    @count = @numbers.size
 
-    @median = "Replace this string with your answer."
+    ####################MINIMUM####################
+    @minimum = @numbers.min
 
+    ####################MAXIMUM####################
+    @maximum = @numbers.max
+
+    ####################RANGE####################
+    @range = @numbers.max - @numbers.min
+
+    ###################MEDIAN####################
+    if(@count % 2 == 0)
+      @median = (@numbers[(@count/2).to_i - 1] + @numbers[(@count/2).to_i])/2.0
+    else
+      @median = @numbers[(@count/2).to_i]
+    end
+
+   
     @sum = "Replace this string with your answer."
 
     @mean = "Replace this string with your answer."
