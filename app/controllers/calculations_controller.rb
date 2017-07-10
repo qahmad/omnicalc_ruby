@@ -114,15 +114,27 @@ class CalculationsController < ApplicationController
       @median = @numbers[(@count/2).to_i]
     end
 
-   
-    @sum = "Replace this string with your answer."
+    ###################SUM####################
+    @sum = @numbers.sum
 
-    @mean = "Replace this string with your answer."
+    ###################MEAN####################
+    @mean = @sum/@count
 
-    @variance = "Replace this string with your answer."
+    ###################VARIANCE####################
+      @calculation = []
 
-    @standard_deviation = "Replace this string with your answer."
+      @numbers.each do |num|
+        difference = num - @mean
+        difference = difference * difference
+        @calculation.push(difference)
+      end
+    
+    @variance = (@calculation.sum) / (@count - 1)
 
+    ###################STANDARD DEVIATION####################
+    @standard_deviation = @variance ** (1/2)
+
+    ###################STANDARD DEVIATION####################
     @mode = "Replace this string with your answer."
 
     # ================================================================================
