@@ -135,7 +135,7 @@ class CalculationsController < ApplicationController
     @standard_deviation = @variance ** (1/2)
 
     ###################STANDARD DEVIATION####################
-    @mode = "Replace this string with your answer."
+    @mode = "The mode will be shown here."
 
     # ================================================================================
     # Your code goes above.
