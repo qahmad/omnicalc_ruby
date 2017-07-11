@@ -109,9 +109,9 @@ class CalculationsController < ApplicationController
 
     ###################MEDIAN####################
     if(@count % 2 == 0)
-      @median = (@numbers[(@count/2).to_i - 1] + @numbers[(@count/2).to_i])/2.0
+      @median = (@sorted_numbers[(@count/2).to_i - 1] + @sorted_numbers[(@count/2).to_i])/2.0
     else
-      @median = @numbers[(@count/2).to_i]
+      @median = @sorted_numbers[(@count/2).to_i]
     end
 
     ###################SUM####################
@@ -131,10 +131,24 @@ class CalculationsController < ApplicationController
     @variance = (@calculation.sum) / (@count)
 
     ###################STANDARD DEVIATION####################
-    @standard_deviation = @variance ** (1.0/2)
+    @standard_deviation = @variance ** (1.0/2.0)
 
-    ###################STANDARD DEVIATION####################
-    @mode = "The mode will be shown here."
+    ###################MODE####################
+    counter = Hash.new(0)
+
+    @sorted_numbers.each do |num|
+      counter[num] += 1
+      # p counter
+    end
+    
+    highest_mode = counter.max_by{|key,value| value}[1] #counter.sort_by{|key,value| value}[-1]
+    values = counter.select{|key,value| value==highest_mode}
+
+    @mode = values 
+    
+    #values.select{|k,v| v == hash.values.max}
+    #counter.invert["key"=>highest_mode]
+
 
     # ================================================================================
     # Your code goes above.
