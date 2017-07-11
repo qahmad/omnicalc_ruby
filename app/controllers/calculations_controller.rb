@@ -93,7 +93,8 @@ class CalculationsController < ApplicationController
     # @sorted_numbers = @squared_numbers
 
     ####################SORTED NUMBERS####################
-    @sorted_numbers = @numbers.sort!
+    @numbers = @numbers.sort!
+    @sorted_numbers = @numbers
 
     ####################COUNT####################
     @count = @numbers.size
