@@ -125,14 +125,13 @@ class CalculationsController < ApplicationController
 
       @numbers.each do |num|
         difference = num - @mean
-        difference = difference * difference
-        @calculation.push(difference)
+        @calculation.push(difference * difference)
       end
     
-    @variance = (@calculation.sum) / (@count - 1)
+    @variance = (@calculation.sum) / (@count)
 
     ###################STANDARD DEVIATION####################
-    @standard_deviation = @variance ** (1/2)
+    @standard_deviation = @variance ** (1.0/2)
 
     ###################STANDARD DEVIATION####################
     @mode = "The mode will be shown here."
